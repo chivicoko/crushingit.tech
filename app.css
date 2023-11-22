@@ -54,6 +54,7 @@ body {
     font-style: normal;
     font-weight: var(--font-W-1);
     line-height: var(--line-h-1);
+    cursor: pointer;
 }
 
 .btn-1 {
@@ -189,7 +190,6 @@ nav .user span {
     /* align-items: flex-start; */
     /* align-self: stretch; */
     margin-top: 30px;
-    margin-bottom: 16px;
 }
 
 .trial-extension span {
@@ -206,12 +206,14 @@ nav .user span {
 
 .trial-extension svg {
     margin-inline: 8px;
+    cursor: pointer;
 }
 
 /* setup guide */
 .setup-guide-container {
     background: var(--plain-white);
     padding: 8px;
+    margin-top: 16px;
 }
 
 .setup-guide {

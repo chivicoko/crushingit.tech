@@ -127,3 +127,12 @@ const notificationModal = document.querySelector('.notificationModal')
 notification.onclick = () => {
     notificationModal.style.display = notificationModal.style.display === 'none' ? 'block' : 'none';
 }
+
+
+// -----
+const cancelSvg = document.querySelector('#cancelSvg');
+const trialExtension = document.querySelector('.trial-extension');
+
+cancelSvg.onclick = () => {
+    trialExtension.style.display = 'none';
+}
