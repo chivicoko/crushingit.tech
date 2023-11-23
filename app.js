@@ -19,42 +19,18 @@ arrow_container.innerHTML = html_1;
 
 arrow_container.onclick = () => {
     if (arrow_container.innerHTML === isTrue ) {
-        arrow_container.innerHTML = html_2;
-        steps.style.display = 'block';
-    } else {
         arrow_container.innerHTML = html_1;
         steps.style.display = 'none';
+    } else {
+        arrow_container.innerHTML = html_2;
+        steps.style.display = 'block';
     }
 
     isTrue = !isTrue;
 };
 
 
-// Selecting all steps individually
-const allSteps = document.querySelectorAll('.setup-guide-container .steps .step');
-const step_details = document.querySelector('.step-details');
-
-// step_details.style.display = 'none';
-
-// allSteps.forEach(step => {
-//     const stepTitleSpan = step.querySelector('.title .head');
-
-//     stepTitleSpan.onclick = () => {
-//         if (step.classList.contains('step-display-content')) {
-//             step.classList.remove('step-display-content');
-//             step_details.style.display = 'none';
-//         } else {
-//             allSteps.forEach(item => item.classList.remove('step-display-content'));
-//             step.classList.add('step-display-content');
-//             step_details.style.display = 'flex';
-//         }
-//     };
-// });
-
-
-
-
-// steps-guide check btn
+// steps-guide check/uncheck btn
 let svg_1 = `
 <svg class="step-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">
     <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
@@ -113,6 +89,7 @@ function toggleAccordion(sectionNumber) {
     }
   }
   
+
 // modals
 //   user modal
 const user = document.querySelector('.user');
@@ -129,7 +106,7 @@ notification.onclick = () => {
 }
 
 
-// -----
+// cancel fo select plan banner
 const cancelSvg = document.querySelector('#cancelSvg');
 const trialExtension = document.querySelector('.trial-extension');
 
