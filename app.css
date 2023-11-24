@@ -49,6 +49,12 @@ body {
     position: relative;
 }
 
+button {
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
 .btn {
     font-size: var(--font-btn-primary);
     font-style: normal;
@@ -162,7 +168,11 @@ nav .search_input:hover {
     border: 1px solid var(--stroke-s-100);
 }
 
-nav .search_input:active, nav .search_input:focus {
+nav .search_input input:active nav .search_input {
+    border: 2px solid var(--plain-white);
+}
+
+nav .search_input input:focus nav .search_input {
     border: 2px solid var(--plain-white);
 }
 
@@ -193,14 +203,27 @@ nav .right {
     justify-content: center;
 }
 
-nav #bell-svg {
-    cursor: pointer;
-    color: var(--font-light);
-    width: 20px;
-    height: 20px;
+nav #bell-svg, nav #bell {
+    border: 1px solid transparent;
+}
+
+nav #bell-svg:hover {
+    /* border: 1px solid #005BD3; */
+    background: var(--grey-100);
+}
+
+nav #bell-svg:active {
+    background: var(--grey-50);
+    border: 1px solid #005BD3;
 }
 
 nav #bell-svg:focus {
+    background: var(--grey-50);
+    border: 1px solid #005BD3;
+}
+
+nav #bell-svg:focus nav #bell {
+    /* background: var(--grey-50); */
     border: 1px solid #005BD3;
 }
 
@@ -279,6 +302,7 @@ nav .user span {
 
 .trial-extension span button {
     margin-top: 16px;
+    background: var(--plain-white);
 }
 
 .trial-extension div {
@@ -287,9 +311,22 @@ nav .user span {
     cursor: pointer;
 }
 
-.trial-extension svg {
+.trial-extension div button {
     width: 20px;
     height: 20px;
+
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+
+button:focus {
+    /* border: 1px solid blue; */
 }
 
 /* setup guide */
@@ -361,25 +398,36 @@ nav .user span {
     background: var(--color-scales-gray-16);
 }
 
-.setup-guide .setup-arrows {
+.setup-guide .setup-arrows button .arrow {
     width: 28px;
     height: 28px;
     cursor: pointer;
     padding: 4px;
     border-radius: 6px;
+    transition: border 0.3s ease;
+    /* border: 2px solid #005BD3; */
 }
 
-.setup-guide .setup-arrows:hover {
+.setup-guide .setup-arrows button .arrow:hover {
     background: #F1F1F1;
 }
 
-.setup-guide .setup-arrows:active {
+.setup-guide .setup-arrows button .arrow:active {
     background: #F0F0F0;
 }
 
-.setup-guide .setup-arrows:focus {
+.setup-guide .setup-arrows button .arrow:focus {
+    border-color: #005BD3;
+    /* border: 2px solid #005BD3; */
+}
+
+/* .setup-guide .setup-arrows button {
     border: 2px solid #005BD3;
 }
+
+.setup-guide .setup-arrows button:focus {
+    border: 2px solid #005BD3;
+} */
 
 .setup-guide-container .steps {
     margin-top: 16px;
@@ -417,6 +465,10 @@ nav .user span {
     height: 24px;
 }
 
+.setup-guide-container .steps .step .title .check-btns .step-hover {
+    display: none;
+}
+
 .setup-guide-container .steps .step .title span {
     color: var(--font-dark, #303030);
     font-size: 13px;
@@ -439,6 +491,9 @@ nav .user span {
 
 .setup-guide-container .steps .step .step-details img {
     display: none;
+    background: #F3F3F3;
+    /* border: 1px solid red; */
+    
 }
 
 .setup-guide-container .steps .step .step-details .details a {
@@ -496,7 +551,7 @@ nav .user span {
     align-items: center;
     padding: 4px 12px 4px 8px;
     border-radius: 8px;
-    /* background: var(--plain-background-1); */
+    background: var(--plain-background-1);
 }
 
 .userModal .head .name div {
