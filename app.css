@@ -49,6 +49,10 @@ body {
     position: relative;
 }
 
+li {
+    list-style: none;
+}
+
 button {
     border: none;
     background: transparent;
@@ -164,15 +168,55 @@ nav .search_input {
     background: var(--grey-200);
 }
 
-nav .search_input:hover {
-    border: 1px solid var(--stroke-s-100);
+.search-container {
+    display: flex;
+    align-items: center;
 }
 
-nav .search_input input:active nav .search_input {
+.search-input-container {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+
+.search-icon {
+    padding: 10px;
+    /* background-color: #4CAF50; */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.search-icon svg {
+    fill: #fff;
+}
+
+/* Focus and Active States */
+.search-input-container:focus-within {
     border: 2px solid var(--plain-white);
 }
 
-nav .search_input input:focus nav .search_input {
+.search-icon:active {
+    background-color: 2px solid var(--plain-white);
+}
+
+nav .search-input-container:hover {
+    border: 1px solid var(--stroke-s-100);
+}
+
+nav .search_input:active {
+    border: 2px solid var(--plain-white);
+}
+
+nav .search_input:focus {
     border: 2px solid var(--plain-white);
 }
 
@@ -300,9 +344,10 @@ nav .user span {
     gap: 8px;
 }
 
-.trial-extension span button {
-    margin-top: 16px;
+.trial-extension span a {
+    /* margin-top: 16px; */
     background: var(--plain-white);
+    text-decoration: none;
 }
 
 .trial-extension div {
@@ -597,17 +642,17 @@ button:focus {
     margin-block: 2px;
 }
 
-.userModal .head .name:hover, .userModal .head .stores:hover, .userModal .body p:hover, .userModal .foot p:hover {
+.userModal .head .name:hover, .userModal .head .stores:hover, .userModal .body li:hover, .userModal .foot li:hover {
     border-radius: 8px;
     background: #F1F1F1;
 }
 
-.userModal .head .name:active, .userModal .head .stores:active, .userModal .body p:active, .userModal .foot p:active {
+.userModal .head .name:active, .userModal .head .stores:active, .userModal .body li:active, .userModal .foot li:active {
     border-radius: 8px;
     background: #F0F0F0;
 }
 
-.userModal .head .name:focus, .userModal .head .stores:focus, .userModal .body p:focus, .userModal .foot p:focus {
+.userModal .head .name:focus, .userModal .head .stores:focus, .userModal .body li:focus, .userModal .foot li:focus {
     border-radius: 8px;
     border: 2px solid #005BD3;
 }
@@ -628,15 +673,20 @@ hr {
     padding: 6px;
 }
 
-.userModal .body p {
+.userModal .body li {
     padding: 6px;
     color: var(--grey-g-200);
     font-size: 13px;
     font-weight: 400;
     line-height: 18.2px;
+    text-decoration: none;
 }
 
-.userModal .foot p {
+.userModal a {
+    text-decoration: none;
+}
+
+.userModal .foot li {
     padding: 6px;
     color: var(--grey-g-200);
     font-size: 13px;
@@ -653,7 +703,7 @@ hr {
     padding: 8px;
 }
 
-.userModal .foot p span {
+.userModal .foot li a span {
     color: var(--grey-g-100, var(--grey-100));
     font-size: 12px;
     font-weight: 400;

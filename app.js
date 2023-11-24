@@ -9,7 +9,7 @@ let html_1 = `
 
 let html_2 = `
 <button>
-    <svg class="arrow" width="20" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg role="button" tabindex="0" aria-label="Search" class="arrow" width="20" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0303 12.2803C14.7374 12.5732 14.2626 12.5732 13.9697 12.2803L10.5 8.81066L7.03033 12.2803C6.73744 12.5732 6.26256 12.5732 5.96967 12.2803C5.67678 11.9874 5.67678 11.5126 5.96967 11.2197L9.96967 7.21967C10.2626 6.92678 10.7374 6.92678 11.0303 7.21967L15.0303 11.2197C15.3232 11.5126 15.3232 11.9874 15.0303 12.2803Z" fill="#4A4A4A"/>
     </svg>
 </button>
@@ -36,13 +36,13 @@ arrow_container.onclick = () => {
 
 // steps-guide check/uncheck btn
 let svg_1 = `
-<svg class="step-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">
+<svg role="button" tabindex="0" aria-label="Search" class="step-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">
     <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
 </svg>
 `
 
 let svg_2 = `
-<svg class="step-checked" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg role="button" tabindex="0" aria-label="Search" class="step-checked" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="12" cy="12" r="10" fill="#303030"></circle>
     <path
         d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
@@ -52,7 +52,7 @@ let svg_2 = `
 `
 
 let svg_3 = `
-<svg class="step-hover" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<svg role="button" tabindex="0" aria-label="Search" class="step-hover" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <circle cx="12" cy="12" r="10" stroke="#8A8A8A" stroke-width="2.08333" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 `
@@ -122,8 +122,13 @@ notification.onclick = () => {
 
 // cancel fo select plan banner
 const cancelSvg = document.querySelector('#cancelSvg');
+// const cancelAnchorTag = document.querySelector('.trial-extension div a');
 const trialExtension = document.querySelector('.trial-extension');
 
 cancelSvg.onclick = () => {
     trialExtension.style.display = 'none';
 }
+
+// cancelAnchorTag.onclick = () => {
+//     trialExtension.style.display = 'none';
+// }
