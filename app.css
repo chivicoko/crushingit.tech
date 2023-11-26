@@ -35,6 +35,7 @@
     --font-btn-primary: 12px;
     --font-W-1: 600;
     --line-h-1: 15.6px;
+    --before-width: 20%;
 }
 
 * {
@@ -51,6 +52,11 @@ body {
 
 li {
     list-style: none;
+}
+
+.logo-area .logo-1 svg {
+    width: 32px;
+    height: 32px;
 }
 
 button {
@@ -144,19 +150,16 @@ button {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: 56px;
     background: var(--color-scales-gray-16);    
-    display: flex;
     padding: 12px 16px;
-    align-items: center;
     gap: 8px;
-    flex: 1 0 0;
 }
 
-nav .logo-area a:active, nav .logo-area a:focus {
-    border: 1px solid var(--state-focused) !important;
+nav .logo-area svg:active, nav .logo-area svg:focus {
+    border: 1px solid var(--state-focused);
 
 }
 
@@ -165,7 +168,6 @@ nav .search_input {
     height: 32px;
     width: 238px;
     align-items: center;
-    /* gap: 6px; */
     border-radius: 8px;
     border: 1px solid var(--stroke-s-200);
     background: var(--grey-200);
@@ -180,21 +182,14 @@ nav .search_input {
 
 .search-input-container {
     display: flex;
-    /* border: 1px solid #ccc; */
     border-radius: 5px;
     overflow: hidden;
 }
 
 .search-icon {
     padding: 10px;
-    /* background-color: #4CAF50; */
-    /* color: #fff; */
     border: none;
     cursor: pointer;
-}
-
-.search-icon svg {
-    /* fill: #fff; */
 }
 
 /* Focus and Active States */
@@ -218,21 +213,12 @@ nav .search-input-container:focus-within {
     border: 2px solid var(--state-focused);
 }
 
-/* nav .search_input:active {
-    border: 2px solid var(--state-focused);
-}
-
-nav .search_input:focus {
-    border: 2px solid var(--state-focused);
-} */
-
 nav .search_input input {
     width: 238px;
     background: #322F33;
     color: var(--font-light);
     border: none;
     outline: none;
-
     color: var(--grey-g-100);
     font-size: var(--font-primary);
     font-style: normal;
@@ -253,8 +239,16 @@ nav .user-area {
     justify-content: center;
 }
 
+nav #bell svg {
+    padding: 6px;
+    color: var(--font-light);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: transparent;
+}
+
 nav #bell svg:hover {
-    /* border: 1px solid #005BD3; */
     background: var(--grey-100);
 }
 
@@ -329,48 +323,53 @@ nav .user .username {
     background: var(--color-scales-gray-16);
     padding: 12px 8px 12px 16px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 28px;
+    margin-bottom: 16px;
 }
 
 .trial-extension span {
     color: var(--font-light-1);
-    font-size: var(--font-primary);
-    font-style: normal;
+    font-size: 13px;
     font-weight: 500;
     line-height: 18.2px;
+    width: 100%;
     gap: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-b
 }
 
 .trial-extension span a {
-    /* margin-top: 16px; */
+    margin-top: 8px;
+    font-size: 12px;
     background: var(--plain-white);
     text-decoration: none;
+    align-self: flex-start;
 }
 
-.trial-extension div {
-    padding: 6px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.trial-extension div #cancelSvg {
-    width: 20px;
-    height: 20px;
+.trial-extension button {
+    padding: 8px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-start;
 }
 
-.trial-extension div button:focus {
+.trial-extension button #cancelSvg {
+    width: 20px;
+    height: 20px;
+}
+
+.trial-extension button:focus {
     border: 2px solid #005BD3;
-    /* outline-offset: 2px; */
-}
-
-.trial-extension div #cancelSvg:focus {
-    outline: #005BD3;
-    outline-offset: 2px;
+    border-radius: 6px;
 }
 
 button {
@@ -378,11 +377,6 @@ button {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    /* border: 1px solid red; */
-}
-
-button:focus {
-    /* border: 1px solid blue; */
 }
 
 /* setup guide */
@@ -450,59 +444,43 @@ button:focus {
     top: 0;
     left: 0;
     height: 4px;
-    width: 18px;
+    /* width: 0; */
+    width: var(--before-width);
     background: var(--color-scales-gray-16);
 }
 
-.setup-guide .setup-arrows button .arrow {
+.setup-guide .setup-arrows {
     width: 28px;
     height: 28px;
     cursor: pointer;
     padding: 4px;
     border-radius: 6px;
     transition: border 0.3s ease;
-    /* border: 2px solid #005BD3; */
 }
 
-.setup-guide .setup-arrows button .arrow:hover {
+.setup-guide .setup-arrows:hover {
     background: #F1F1F1;
 }
 
-.setup-guide .setup-arrows button .arrow:active {
+.setup-guide .setup-arrows:active {
     background: #F0F0F0;
 }
 
-.setup-guide .setup-arrows button .arrow:focus {
-    outline: #005BD3;
-    outline-offset: 2px;
-    /* border: 2px solid #005BD3; */
-}
-
-/* .setup-guide .setup-arrows button {
+.setup-guide .setup-arrows:focus {
     border: 2px solid #005BD3;
 }
-
-.setup-guide .setup-arrows button:focus {
-    border: 2px solid #005BD3;
-} */
 
 .setup-guide-container .steps {
     margin-top: 16px;
-    /* padding: 8px; */
 
     display: none;
 }
-
-/* .step-display {
-    display: none;
-} */
 
 .step-display-content {
     background: #F3F3F3;
     border-radius: 10px;
     padding: 2px 0;
     align-items: center;
-    /* gap: 96px; */
     margin-bottom: 8px;
 }
 
@@ -510,7 +488,7 @@ button:focus {
     padding: 8px 8px 12px 8px;
 }
 
-.setup-guide-container .steps .step .title {
+.setup-guide-container .steps .step .top {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -522,11 +500,7 @@ button:focus {
     height: 24px;
 }
 
-.setup-guide-container .steps .step .title .check-btns .step-hover {
-    display: none;
-}
-
-.setup-guide-container .steps .step .title span {
+.setup-guide-container .steps .step .top span {
     color: var(--font-dark, #303030);
     font-size: 13px;
     font-style: normal;
@@ -538,19 +512,15 @@ button:focus {
     display: none;
     align-items: center;
     justify-content: space-between;
-    /* margin: 8px 8px 12px 8px; */
 }
 
 .setup-guide-container .steps .step .step-details .details {
-    /* margin-bottom: 0; */
     padding-left: 32px;
 }
 
 .setup-guide-container .steps .step .step-details img {
     display: none;
-    background: #F3F3F3;
-    /* border: 1px solid red; */
-    
+    background: #F3F3F3;    
 }
 
 .setup-guide-container .steps .step .step-details .details a {
@@ -570,7 +540,6 @@ button:focus {
 
 .setup-guide-container .steps .step .step-details .details button {
     margin-top: 16px;
-    /* margin-bottom: 10px; */
 }
 
 .setup-guide-container .steps .step span {
@@ -589,10 +558,8 @@ button:focus {
     position: absolute;
     right: 15px;
     top: 65px;
-
     display: none;
     padding: 6px 0px;
-    /* gap: 4px; */
     border-radius: 14px;
     border: 1px solid var(--stroke-s-50);
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
@@ -601,7 +568,6 @@ button:focus {
 .userModal {
     display: none;
     padding: 6px 0px;
-    /* gap: 4px; */
     border-radius: 14px;
     border: 1px solid var(--stroke-s-50);
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
@@ -631,7 +597,6 @@ button:focus {
 }
 
 .userModal .head .name {
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -644,14 +609,11 @@ button:focus {
     border-radius: 5.25px;
     background: #36FBA1;
     display: flex;
-    /* padding: 9.625px 5.875px 10.375px 6.125px; */
     justify-content: center;
     align-items: center;
     color: rgba(0, 0, 0, 0.40);
-
     font-size: 10.5px;
     font-weight: 500;
-    /* line-height: 14.7px; */
 }
 
 .userModal .head .name p {
@@ -690,10 +652,6 @@ button:focus {
 
 .userModal .user-list-item.email, .userModal .user-list-item.manage-account {
     margin-block: 6px;
-}
-
-.userModal .user-list-item.email {
-    /* padding: 8px; */
 }
 
 .userModal .user-list-item.email button {
@@ -736,21 +694,6 @@ hr {
     color: var(--stroke-s-100);
     background: var(--stroke-s-100);
 }
-
-/* .userModal .body, .userModal .foot {
-    padding: 6px;
-} */
-
-/* .userModal .foot .email {
-    padding: 8px;
-} */
-
-/* .userModal .foot li a span {
-    color: var(--grey-g-100, var(--grey-100));
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 15.6px;
-} */
 
 /* notification modal */
 .notificationModal {
@@ -803,6 +746,53 @@ hr {
     line-height: 18.2px;
 }
 
+.hidden {
+    display: none;
+}
+
+.shopping-item svg path, .shopping-item svg circle {
+    stroke: #000;
+}
+
+.shopping-item-checkbox:focus .not-completed-icon circle {
+    fill: #d9d9d9;
+    stroke-dasharray: 0 0;
+}
+
+.shopping-item-checkbox:hover .not-completed-icon circle {
+    stroke-dasharray: 0 0;
+}
+
+
+@keyframes zoom-in-spin {
+    from {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner-icon {
+    animation: spin 1000ms infinite linear;
+}
+
+.completed-icon {
+    animation: zoom-in-spin 300ms 1 linear;
+}
+
+
 @media only screen and (min-width: 767px) {
     nav .search_input {
       width: 480px;
@@ -822,28 +812,26 @@ hr {
 
     .trial-extension  {
         width: 800px;
-        /* height: 56px; */
+        max-width: 800px;
         margin-top: 32px;
-        /* display: flex; */
-        /* justify-content: start; */
         align-items: center;
         border-radius: 8px;
     }
     
     .trial-extension  span {
         width: 100%;
-        display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
 
-    .trial-extension  span button {
+    .trial-extension span a {
         margin-top: 0;
-        margin-right: 14px;
     }
 
     .setup-guide-container {
         width: 800px;
+        max-width: 800px;
         border-radius: 18px;
         border: 1px solid var(--stroke-s-50);
         box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.05);
@@ -855,6 +843,8 @@ hr {
 
     .logo-2 {
         display: block;
+        width: 104.868px;
+        height: 30px;
     }
 
     nav #bell svg {
@@ -883,13 +873,12 @@ hr {
         flex-direction: column;
     }
 
+    nav {
+        justify-content: space-between;
+    }
 
-    /* notification modal */
     .notificationModal {
-        width: 383px;
-        height: 118px;
-
-    width: 358px;
-    height: 136px;
+        width: 358px;
+        height: 136px;
     }
 }
