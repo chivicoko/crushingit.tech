@@ -155,17 +155,22 @@ nav {
     flex: 1 0 0;
 }
 
+nav .logo-area a:active, nav .logo-area a:focus {
+    border: 1px solid var(--state-focused) !important;
+
+}
+
 nav .search_input {
     display: flex;
     height: 32px;
     width: 238px;
-    padding: 8px;
     align-items: center;
-    gap: 6px;
-    /* flex: 1 0 0; */
+    /* gap: 6px; */
     border-radius: 8px;
     border: 1px solid var(--stroke-s-200);
     background: var(--grey-200);
+    padding: 10px 0;
+    font-size: 16px;
 }
 
 .search-container {
@@ -175,28 +180,21 @@ nav .search_input {
 
 .search-input-container {
     display: flex;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 5px;
     overflow: hidden;
-}
-
-.search-input {
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    outline: none;
 }
 
 .search-icon {
     padding: 10px;
     /* background-color: #4CAF50; */
-    color: #fff;
+    /* color: #fff; */
     border: none;
     cursor: pointer;
 }
 
 .search-icon svg {
-    fill: #fff;
+    /* fill: #fff; */
 }
 
 /* Focus and Active States */
@@ -212,13 +210,21 @@ nav .search-input-container:hover {
     border: 1px solid var(--stroke-s-100);
 }
 
-nav .search_input:active {
-    border: 2px solid var(--plain-white);
+nav .search-input-container:active {
+    border: 2px solid var(--state-focused);
+}
+
+nav .search-input-container:focus-within {
+    border: 2px solid var(--state-focused);
+}
+
+/* nav .search_input:active {
+    border: 2px solid var(--state-focused);
 }
 
 nav .search_input:focus {
-    border: 2px solid var(--plain-white);
-}
+    border: 2px solid var(--state-focused);
+} */
 
 nav .search_input input {
     width: 238px;
@@ -241,34 +247,27 @@ nav .search_input input::placeholder {
 nav .search_input svg {
 }
 
-nav .right {
+nav .user-area {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-nav #bell-svg, nav #bell {
-    border: 1px solid transparent;
-}
-
-nav #bell-svg:hover {
+nav #bell svg:hover {
     /* border: 1px solid #005BD3; */
     background: var(--grey-100);
 }
 
-nav #bell-svg:active {
+nav #bell svg:active {
     background: var(--grey-50);
-    border: 1px solid #005BD3;
+    outline: 2px solid #005BD3;
+    outline-offset: 2px;
 }
 
-nav #bell-svg:focus {
+nav #bell svg:focus {
     background: var(--grey-50);
-    border: 1px solid #005BD3;
-}
-
-nav #bell-svg:focus nav #bell {
-    /* background: var(--grey-50); */
-    border: 1px solid #005BD3;
+    outline: 2px solid #005BD3;
+    outline-offset: 2px;
 }
 
 nav .user {
@@ -296,7 +295,7 @@ nav .user:focus {
     box-shadow: 0px 0px 0px 3px #005BD3, 0px 0px 0px 1px #000;
 }
 
-nav .user p {
+nav .user .username-initials {
     color: rgba(0, 0, 0, 0.40);
     font-size: 12px;
     font-style: normal;
@@ -310,7 +309,7 @@ nav .user p {
     align-items: center;
 }
 
-nav .user span {
+nav .user .username {
     padding-right: 12px;
     display: none;
     align-items: center;
@@ -356,10 +355,22 @@ nav .user span {
     cursor: pointer;
 }
 
-.trial-extension div button {
+.trial-extension div #cancelSvg {
     width: 20px;
     height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.trial-extension div button:focus {
+    border: 2px solid #005BD3;
+    /* outline-offset: 2px; */
+}
+
+.trial-extension div #cancelSvg:focus {
+    outline: #005BD3;
+    outline-offset: 2px;
 }
 
 button {
@@ -462,7 +473,8 @@ button:focus {
 }
 
 .setup-guide .setup-arrows button .arrow:focus {
-    border-color: #005BD3;
+    outline: #005BD3;
+    outline-offset: 2px;
     /* border: 2px solid #005BD3; */
 }
 
@@ -586,11 +598,30 @@ button:focus {
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
 }
 
-.userModal .head {
-    padding-inline: 6px;
+.userModal {
+    display: none;
+    padding: 6px 0px;
+    /* gap: 4px; */
+    border-radius: 14px;
+    border: 1px solid var(--stroke-s-50);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
 }
 
-.userModal .head .name {
+.menu-active {
+    display: block;
+}
+  
+.userModal li {
+    margin-inline: 6px;
+    list-style: none;
+}
+
+.userModal li a {
+    text-decoration: none;
+}
+
+.userModal .head {
+    padding-inline: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -599,15 +630,15 @@ button:focus {
     background: var(--plain-background-1);
 }
 
-.userModal .head .name div {
+.userModal .head .name {
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
 }
 
-
-.userModal .head .name div span {
+.userModal .head .name span {
     width: 28px;
     height: 28px;
     border-radius: 5.25px;
@@ -623,43 +654,80 @@ button:focus {
     /* line-height: 14.7px; */
 }
 
-.userModal .head .name div span p {
-}
-
-.userModal .head .name div p {
+.userModal .head .name p {
     color: var(--grey-g-200);
     font-size: 13px;
     font-weight: 600;
     line-height: 18.2px;
 }
 
-.userModal .head .stores {
+.userModal .stores button {
     padding: 6px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 8px;
+    margin-block: 4px;
+}
+
+.userModal .stores svg {
+    width: 20px;
+    height: 20px;
+}
+
+.userModal .user-list-item {
     margin-block: 2px;
 }
 
-.userModal .head .name:hover, .userModal .head .stores:hover, .userModal .body li:hover, .userModal .foot li:hover {
+.userModal .user-list-item a {
+    padding: 6px;
+    color: var(--grey-g-200) !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18.2px;
+    text-decoration: none;
+}
+
+.userModal .user-list-item.email, .userModal .user-list-item.manage-account {
+    margin-block: 6px;
+}
+
+.userModal .user-list-item.email {
+    /* padding: 8px; */
+}
+
+.userModal .user-list-item.email button {
+    text-align: start;
+}
+
+.userModal .user-list-item.email span {
+    color: var(--grey-g-100, var(--grey-100));
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15.6px;
+}
+
+.userModal .user-list-item.logout {
+    margin-block: 0;
+}
+
+.userModal .user-list-item:hover {
     border-radius: 8px;
     background: #F1F1F1;
 }
 
-.userModal .head .name:active, .userModal .head .stores:active, .userModal .body li:active, .userModal .foot li:active {
+.userModal .user-list-item:active {
     border-radius: 8px;
     background: #F0F0F0;
 }
 
-.userModal .head .name:focus, .userModal .head .stores:focus, .userModal .body li:focus, .userModal .foot li:focus {
+.userModal .user-list-item:focus {
     border-radius: 8px;
     border: 2px solid #005BD3;
 }
 
-.userModal .head .stores svg {
-    width: 20px;
-    height: 20px;
+a {
+    text-decoration: none;
 }
 
 hr {
@@ -669,48 +737,20 @@ hr {
     background: var(--stroke-s-100);
 }
 
-.userModal .body, .userModal .foot {
+/* .userModal .body, .userModal .foot {
     padding: 6px;
-}
+} */
 
-.userModal .body li {
-    padding: 6px;
-    color: var(--grey-g-200);
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 18.2px;
-    text-decoration: none;
-}
-
-.userModal a {
-    text-decoration: none;
-}
-
-.userModal .foot li {
-    padding: 6px;
-    color: var(--grey-g-200);
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 18.2px;
-    margin-block: 4px;
-}
-
-.userModal .foot:last-child {
-    margin-block: 0;
-}
-
-.userModal .foot .email {
+/* .userModal .foot .email {
     padding: 8px;
-}
+} */
 
-.userModal .foot li a span {
+/* .userModal .foot li a span {
     color: var(--grey-g-100, var(--grey-100));
     font-size: 12px;
     font-weight: 400;
     line-height: 15.6px;
-}
-
-
+} */
 
 /* notification modal */
 .notificationModal {
@@ -817,7 +857,7 @@ hr {
         display: block;
     }
 
-    nav #bell-svg {
+    nav #bell svg {
         padding: 6px;
         color: var(--font-light);
         width: 32px;
@@ -830,7 +870,7 @@ hr {
         padding: 2px 2px 2px 8px;
     }
     
-    nav .user span {
+    nav .user .username {
         display: flex;
     }
 
