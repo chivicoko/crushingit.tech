@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible elements</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <main>
+        <button class="menuBtn" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="menulist">Victor VeeCee</button>
+
+        <ul id="menulist" class="menulist" aria-labelledby="menuBtn" role="menu">
+            <li class="menuitem">
+                <button role="menuitem">Victor's Profile</button>
+            </li>
+            <li class="menuitem">
+                <button role="menuitem">Victor's Dashboard</button>
+            </li>
+            <li class="menuitem">
+                <button role="menuitem">Victor's Store</button>
+            </li>
+        </ul>
+    </main>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
