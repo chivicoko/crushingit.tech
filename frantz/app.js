@@ -2,13 +2,23 @@ const app = () => {
     
     const menulist = document.querySelector('#menulist');
     const menuBtn = document.querySelector('#menuBtn');
-    const menuItemBtns = document.querySelectorAll('.menuitem button');
+    const menuItemBtns = menulist.querySelectorAll('[role="menuitem"]');
     
     // clicking the menu trigger button
     menuBtn.addEventListener('click', () => {
+        const isExpanded = menuBtn.attributes["aria-expanded"].value === "true";
+
         menulist.classList.toggle('active');
-        menuItemBtns.item(0).focus()
-    })
+        menuItemBtns.item(0).focus();
+        
+        if (isExpanded) {
+            menuBtn.ariaExpanded = "false";
+            // menuBtn.focus();
+        } else {
+            menuBtn.ariaExpanded = "true";
+        }
+        
+    });
     
     // clicking any of the menu items/buttons
     menuItemBtns.forEach(menuItemBtn => {
@@ -22,6 +32,7 @@ const app = () => {
         if (event.key === "Escape" && menulist.classList.contains('active')) {
             menulist.classList.remove('active');
             menuBtn.focus();
+            menuBtn.ariaExpanded = "false";
         } else if (event.key === "ArrowDown" || event.key === "ArrowRight") {
             event.preventDefault();
 

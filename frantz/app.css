@@ -21,11 +21,13 @@ main {
     transition: all .3s linear;
     color: #eee;
     background: #222;
+    border: 2px solid transparent;
 }
 
-.menuBtn:hover {
+.menuBtn:hover, .menuBtn:focus {
     background: #444;
     color: #fff;
+    border: 2px solid blue;
 }
 
 .menulist {
@@ -38,7 +40,7 @@ main {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 12px;
     position: absolute;
-    top: 407px;
+    top: 415px;
     left: 440px;
     display: none;
 }
