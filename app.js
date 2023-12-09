@@ -1,3 +1,162 @@
+const app = () => {
+
+    const HIDDEN_CLASS = 'hidden';
+    const MARK_AS_DONE_CLASS = 'checkbox-done';
+
+    const checkBtnsForSteps = document.querySelectorAll('.steps .top .head');
+
+    const checkboxButton = document.querySelector("#shopping-item-checkbox");
+    const notCompletedIcon = checkboxButton.querySelector("#not-completed-icon");
+    const completedIcon = checkboxButton.querySelector("#completed-icon");
+    const loadingSpinnerIcon = checkboxButton.querySelector("#loading-spinner-icon");
+
+    const checkboxButtonStatus = checkboxButton.querySelector("#shopping-item-checkbox-status");
+
+    
+    function handleMarkAsDone() {
+        notCompletedIcon.classList.add(HIDDEN_CLASS);
+        loadingSpinnerIcon.classList.remove(HIDDEN_CLASS);
+
+        // checkboxButtonStatus.ariaLabel = "Loading. Please wait...";
+        
+        setTimeout(() => {
+            loadingSpinnerIcon.classList.add(HIDDEN_CLASS);
+            completedIcon.classList.remove(HIDDEN_CLASS);
+            
+            checkboxButton.ariaLabel = checkboxButton.ariaLabel.replace('as done', 'as not done');
+            
+            // checkboxButtonStatus.ariaLabel = "Successfully marked clean your room as done.";
+            checkboxButton.classList.add(MARK_AS_DONE_CLASS);
+        }, 1000)
+    }
+    
+    function handleMarkAsNotDone() {
+        completedIcon.classList.add(HIDDEN_CLASS);
+        loadingSpinnerIcon.classList.remove(HIDDEN_CLASS);
+        
+        // checkboxButtonStatus.ariaLabel = "Loading. Please wait...";
+
+        setTimeout(() => {
+            loadingSpinnerIcon.classList.add(HIDDEN_CLASS);
+            
+            checkboxButton.ariaLabel = checkboxButton.ariaLabel.replace('as not done', 'as done');
+            
+            // checkboxButtonStatus.ariaLabel = "Successfully marked clean your room as not done.";
+            notCompletedIcon.classList.remove(HIDDEN_CLASS);
+        }, 1000);
+
+    }
+    
+    function handleMarkDoneorNotDone() {
+        checkBtnsForSteps.forEach((btn) => {
+            const markedAsDone = checkboxButton.classList.contains(MARK_AS_DONE_CLASS);
+    
+            if (markedAsDone) {
+                handleMarkAsNotDone();
+            } else {
+                handleMarkAsDone();
+            }
+        });
+    }
+
+    checkboxButton.addEventListener('click', handleMarkDoneorNotDone);
+    
+
+    // -------------
+    const menuTrigger = document.querySelector("#user");
+    const menu = document.querySelector("#userModal");
+  
+    const allMenuItems = menu.querySelectorAll('[role="menuitem"]');
+  
+    function closeMenu() {
+      menuTrigger.ariaExpanded = "false";
+      menuTrigger.focus();
+    }
+  
+    function handleMenuEscapeKeypress(event) {
+      if (event.key === "Escape") {
+        toggleMenu();
+      }
+    }
+  
+    function handleMenuItemArrowKeyPress(
+      event,
+      menuItemIndex
+    ) {
+      const isLastMenuItem =
+        menuItemIndex === allMenuItems.length - 1;
+      const isFirstMenuItem = menuItemIndex === 0;
+  
+      const nextMenuItem = allMenuItems.item(
+        menuItemIndex + 1
+      );
+      const previousMenuItem = allMenuItems.item(
+        menuItemIndex - 1
+      );
+  
+      if (
+        event.key === "ArrowRight" ||
+        event.key === "ArrowDown"
+      ) {
+
+        if (isLastMenuItem) {
+          allMenuItems.item(0).focus();
+  
+          return;
+        }
+        nextMenuItem.focus();
+      }
+  
+      if (
+        event.key === "ArrowUp" ||
+        event.key === "ArrowLeft"
+      ) {
+        if (isFirstMenuItem) {
+          allMenuItems.item(allMenuItems.length - 1).focus();
+          return;
+        }
+  
+        previousMenuItem.focus();
+      }
+    }
+  
+    function openMenu() {
+      menuTrigger.ariaExpanded = "true";
+      allMenuItems.item(0).focus();
+  
+      menu.addEventListener(
+        "keyup",
+        handleMenuEscapeKeypress
+      );
+  
+      allMenuItems.forEach(function (
+        menuItem,
+        menuItemIndex
+      ) {
+        menuItem.addEventListener("keyup", function (event) {
+          handleMenuItemArrowKeyPress(event, menuItemIndex);
+        });
+      });
+    }
+  
+    function toggleMenu() {
+      const isExpanded = menuTrigger.attributes["aria-expanded"].value === "true";
+      menu.classList.toggle("menu-active");
+  
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+  
+    menuTrigger.addEventListener("click", toggleMenu);
+    
+}
+
+app();
+
+
 const html1 = `
     <button>
         <svg role="button" tabindex="0" aria-label="Search" class="arrow" width="20" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,49 +184,6 @@ arrowContainer.onclick = () => {
     steps.style.display = isTrue ? 'none' : 'block';
     isTrue = !isTrue;
 };
-
-
-// steps-guide check/uncheck btn
-// let svg_1 = `
-// <svg role="button" tabindex="0" aria-label="Search" class="step-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">
-//     <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
-// </svg>
-// `
-
-// let svg_2 = `
-// <svg role="button" tabindex="0" aria-label="Search" class="step-checked" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-//     <circle cx="12" cy="12" r="10" fill="#303030"></circle>
-//     <path
-//         d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
-//         fill="#fff"
-//     ></path>
-// </svg>
-// `
-
-// let svg_3 = `
-// <svg role="button" tabindex="0" aria-label="Search" class="step-hover" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-//   <circle cx="12" cy="12" r="10" stroke="#8A8A8A" stroke-width="2.08333" stroke-linecap="round" stroke-linejoin="round"/>
-// </svg>
-// `
-
-// const checkBtns = document.querySelectorAll('.check-btns');
-
-
-
-// checkBtns.forEach(btn => {
-//     btn.setAttribute('data-checked', 'false');
-//     btn.innerHTML = svg_1;
-
-//     btn.onclick = () => {
-//         if (btn.getAttribute('data-checked') === 'false') {
-//             btn.innerHTML = svg_2;
-//             btn.setAttribute('data-checked', 'true');
-//         } else {
-//             btn.innerHTML = svg_1;
-//             btn.setAttribute('data-checked', 'false');
-//         }
-//     };
-// });
 
 
 // start accordion
@@ -115,13 +231,8 @@ notification.onclick = () => {
 
 // cancel fo select plan banner
 const cancelSvg = document.querySelector('#cancelSvg');
-// const cancelAnchorTag = document.querySelector('.trial-extension div a');
 const trialExtension = document.querySelector('.trial-extension');
 
 cancelSvg.onclick = () => {
     trialExtension.style.display = 'none';
 }
-
-// cancelAnchorTag.onclick = () => {
-//     trialExtension.style.display = 'none';
-// }
